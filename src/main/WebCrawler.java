@@ -10,8 +10,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class WebCrawler {
-    private static final int MAX_DEPTH = 2;
-    private static final int MAX_VISIT = 100;
+    private static final int MAX_DEPTH = 8;
+    private static final int MAX_VISIT = 10000;
     private static final ArrayList<String> visitNext = new ArrayList<>();
     private static final ArrayList<String> visitAfter = new ArrayList<>();
     private static final Map<String, Integer> searchWords = new HashMap<>();
@@ -30,8 +30,7 @@ public class WebCrawler {
         searchWords.put("Elon Mask", 0);
         visitNext.add("https://en.wikipedia.org/wiki/Elon_Musk");
         file = CSVHandler.createCSV("results.csv", searchWords.keySet());
-        WebCrawler crawler = new WebCrawler();
-        crawler.crawlSites(visitNext, 0);
+        WebCrawler.crawlSites(visitNext, 0);
         generateTop10("results.csv", "top10.csv");
     }
 
@@ -42,7 +41,7 @@ public class WebCrawler {
      * @param toVisit the list of links to be visited in on the current depth
      * @param depth   current depth of the search
      */
-    public void crawlSites(ArrayList<String> toVisit, int depth) {
+    private static void crawlSites(ArrayList<String> toVisit, int depth) {
         visitAfter.clear();
         if (depth <= MAX_DEPTH && visitedLinks.size() <= MAX_VISIT) {
             // for every URL in the toVisit array

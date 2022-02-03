@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class CSVTest {
+public class Testing {
 
     @Test
     public void checkCreateCSVReturnObject() {
