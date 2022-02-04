@@ -135,7 +135,6 @@ public class WebCrawler {
         // adds top ten sites to the top10 file
         for (int i = 0; i < 10; i++) {
             try {
-                System.out.println(getTotal(topSites.get(i)));
                 top10.println(topSites.get(i));
                 top10.flush();
             } catch (Exception e) {
